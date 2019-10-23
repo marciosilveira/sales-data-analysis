@@ -3,6 +3,7 @@ using Sales.Data.Analysis.Domain.Entities;
 using Sales.Data.Analysis.IO;
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sales.Data.Analysis.Domain
@@ -24,21 +25,24 @@ namespace Sales.Data.Analysis.Domain
             _logger.LogWarning("Iniciado processamento do arquivo de entrada.");
         }
 
-        public async Task Run()
+        public async Task Run(CancellationToken cancellationToken = default)
         {
-            await Task.Factory.StartNew(() =>
+            await Task.Run(() =>
             {
-                string[] fileNames = _readFromFile.GetFiles(FileIn.FolderIn);
-                if (fileNames != null)
+                while (!cancellationToken.IsCancellationRequested)
                 {
-                    foreach (var name in fileNames)
+                    string[] fileNames = _readFromFile.GetFiles(FileIn.FolderIn);
+                    if (fileNames == null || fileNames.Length == 0)
+                        Task.Delay(800).Wait();
+                    else
                     {
-                        Process(name);
+                        foreach (var name in fileNames)
+                            Process(name);
                     }
                 }
 
                 _logger.LogWarning("Finalizado processamento do arquivo de entrada.");
-            });
+            }, cancellationToken);
         }
 
         private void Process(string fileName)
