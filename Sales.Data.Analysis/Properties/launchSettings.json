@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Agibank.Collect.Sale": {
+    "Sales.Data.Analysis": {
       "commandName": "Project"
     }
   }

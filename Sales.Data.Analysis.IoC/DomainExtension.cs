@@ -7,9 +7,7 @@ namespace Sales.Data.Analysis.IoC
     {
         public static IServiceCollection AddDomainDependency(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<ProcessReceivedFile>();
-
-            return serviceCollection;
+            return serviceCollection.AddTransient<ProcessFile>();
         }
     }
 }

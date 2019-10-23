@@ -26,7 +26,7 @@ namespace Sales.Data.Analysis.Domain.Entities
             public SaleBuilder(string line)
             {
                 var splitLine = line.Split(Separator);
-                if (splitLine.Length > 0)
+                if (splitLine.Length == 4)
                 {
                     Instance.Id = int.Parse(splitLine[1]);
                     Instance.SalesmanName = splitLine[3];

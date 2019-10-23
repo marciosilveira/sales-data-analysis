@@ -23,7 +23,7 @@ namespace Sales.Data.Analysis.Domain.Entities
             public SalesmanBuilder(string line)
             {
                 var splitLine = line.Split(Separator);
-                if (splitLine.Length > 0)
+                if (splitLine.Length == 4)
                 {
                     Instance.Cpf = splitLine[1];
                     Instance.Name = splitLine[2];

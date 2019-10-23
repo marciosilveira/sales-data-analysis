@@ -9,6 +9,7 @@ namespace Sales.Data.Analysis.IoC
             return serviceCollection
                 .AddLoggerDependency()
                 .AddDomainDependency()
+                .AddFileDependency()
                 .BuildServiceProvider();
         }
     }

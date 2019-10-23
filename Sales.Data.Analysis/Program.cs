@@ -16,17 +16,13 @@ namespace Sales.Data.Analysis
 
             try
             {
-                var processReceivedFile = serviceProvider.GetService<ProcessReceivedFile>();
+                var processReceivedFile = serviceProvider.GetService<ProcessFile>();
                 await processReceivedFile.Run();
             }
             catch (Exception ex)
             {
-                logger.LogError(ex.Message);
+                logger.LogError(ex, ex.Message);
                 throw;
-            }
-            finally
-            {
-                Task.Delay(200).Wait();
             }
         }
     }

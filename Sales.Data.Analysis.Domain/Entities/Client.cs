@@ -22,7 +22,7 @@ namespace Sales.Data.Analysis.Domain.Entities
             public ClientBuilder(string line)
             {
                 var splitLine = line.Split(Separator);
-                if (splitLine.Length > 0)
+                if (splitLine.Length == 4)
                 {
                     Instance.Cnpj = splitLine[1];
                     Instance.Name = splitLine[2];

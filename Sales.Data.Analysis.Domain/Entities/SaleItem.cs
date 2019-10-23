@@ -23,7 +23,7 @@ namespace Sales.Data.Analysis.Domain.Entities
             public SaleItemBuilder(string line)
             {
                 var splitLine = line.Replace("[", "").Replace("]", "").Split(Separator);
-                if (splitLine.Length > 0)
+                if (splitLine.Length == 3)
                 {
                     Instance.Id = int.Parse(splitLine[0]);
                     Instance.Quantity = int.Parse(splitLine[1]);
