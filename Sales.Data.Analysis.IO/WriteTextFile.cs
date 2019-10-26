@@ -1,21 +1,26 @@
-﻿using System.IO;
-
-namespace Sales.Data.Analysis.IO
+﻿namespace Sales.Data.Analysis.IO
 {
-    public class WriteTextFile : FileBase
+    public class WriteTextFile
     {
+        private readonly IDirectoryFile _directoryFile;
+
+        public WriteTextFile(IDirectoryFile directoryFile)
+        {
+            _directoryFile = directoryFile;
+        }
+
         public void WriteText(string path, string fileName, string contents, bool overrideFile = false)
         {
-            if (!IsValidFileName(fileName))
+            if (!_directoryFile.IsValidFileName(fileName))
                 return;
 
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
+            if (!_directoryFile.DirectoryExists(path))
+                _directoryFile.CreateDirectory(path);
 
             if (overrideFile)
-                File.WriteAllText($@"{path}\{fileName}", contents);
+                _directoryFile.WriteAllText($@"{path}\{fileName}", contents);
             else
-                File.AppendAllText($@"{path}\{fileName}", contents);
+                _directoryFile.AppendAllText($@"{path}\{fileName}", contents);
         }
     }
 }

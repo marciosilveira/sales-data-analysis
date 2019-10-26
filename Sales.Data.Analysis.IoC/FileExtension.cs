@@ -8,6 +8,7 @@ namespace Sales.Data.Analysis.IoC
         public static IServiceCollection AddFileDependency(this IServiceCollection serviceCollection)
         {
             return serviceCollection
+                .AddSingleton<IDirectoryFile, DirectoryFile>()
                 .AddSingleton<ReadFromFile>()
                 .AddSingleton<WriteTextFile>()
                 .AddSingleton<MoveFile>();
