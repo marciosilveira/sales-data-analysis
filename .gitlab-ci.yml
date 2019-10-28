@@ -12,7 +12,7 @@ build_job:
     paths:
       - o
   tags:
-    - W104YDJCK2
+    - dotnetcore
 
 test_job:
   stage: test
@@ -28,5 +28,5 @@ test_job:
   needs:
     - build_job
   tags:
-    - W104YDJCK2
+    - dotnetcore
 
