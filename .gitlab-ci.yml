@@ -17,7 +17,8 @@ build_job:
 test_job:
   stage: test
   script:
-    - dotnet test --logger:trx;LogFileName=TestOutput.xml
+    - dotnet add package XunitXml.TestLogger --version 2.1.26
+    - dotnet test --logger:"xunit;LogFilePath=TestOutput.xml"
   artifacts:
     when: always  
     expire_in: 1 week 
