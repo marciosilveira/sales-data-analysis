@@ -1,3 +1,7 @@
+[![pipeline status](https://gitlab.com/marciosilveira1/sales-data-analysis/badges/master/pipeline.svg)](https://gitlab.com/marciosilveira1/sales-data-analysis/commits/master)
+[![coverage report](https://gitlab.com/marciosilveira1/sales-data-analysis/badges/master/coverage.svg)](https://gitlab.com/marciosilveira1/sales-data-analysis/commits/master)
+
+
 # Conceito
 
 Sistema de análise de dados de venda que irá importar lotes de arquivos e produzir
