@@ -17,7 +17,7 @@ build_job:
 test_job:
   stage: test
   script:
-    - dotnet add package XunitXml.TestLogger --version 2.1.26
+    - dotnet add Sales.Data.Analysis.UnitTest package XunitXml.TestLogger --version 2.1.26
     - dotnet test --logger:"xunit;LogFilePath=TestOutput.xml"
   artifacts:
     when: always  
