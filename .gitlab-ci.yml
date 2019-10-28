@@ -20,7 +20,7 @@ test_job:
     - dotnet add Sales.Data.Analysis.UnitTest package XunitXml.TestLogger --version 2.1.26
     - dotnet add Sales.Data.Analysis.UnitTest package coverlet.msbuild
     - dotnet test --logger "xunit;LogFileName=TestResults.xml" --results-directory ./BuildReports/UnitTests  /p:CollectCoverage=true /p:CoverletOutput=BuildReports\Coverage\  /p:CoverletOutputFormat=cobertura /p:Exclude="[xunit.*]"
-  coverage: '/Total\.*?([0-9]..{1,3})%/'
+  coverage: '/Total.*?([0-9].{1,4})%/'
   artifacts:
     when: always
     expire_in: 1 week
