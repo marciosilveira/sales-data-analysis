@@ -4,13 +4,20 @@ namespace Sales.Data.Analysis.IO
 {
     public class MoveFile
     {
+        private readonly IDirectoryFile _directoryFile;
+
+        public MoveFile(IDirectoryFile directoryFile)
+        {
+            _directoryFile = directoryFile;
+        }
+
         public void Move(string sourceFileName, string folderMove)
         {
-            string pathOut = $@"{Directory.GetCurrentDirectory()}\{folderMove}";
-            if (!Directory.Exists(pathOut))
-                Directory.CreateDirectory(pathOut);
+            string pathOut = $@"{_directoryFile.GetCurrentDirectory()}\{folderMove}";
+            if (!_directoryFile.DirectoryExists(pathOut))
+                _directoryFile.CreateDirectory(pathOut);
 
-            File.Move(sourceFileName, Path.Combine(pathOut, Path.GetFileName(sourceFileName)));
+            _directoryFile.FileMove(sourceFileName, Path.Combine(pathOut, Path.GetFileName(sourceFileName)));
         }
     }
 }

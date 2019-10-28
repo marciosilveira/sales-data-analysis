@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Sales.Data.Analysis.IO
 {
+    [ExcludeFromCodeCoverage]
     public class DirectoryFile : IDirectoryFile
     {
         public string GetCurrentDirectory() => Directory.GetCurrentDirectory();
@@ -13,5 +15,6 @@ namespace Sales.Data.Analysis.IO
         public string[] ReadAllLines(string fileName) => File.ReadAllLines(fileName);
         public void WriteAllText(string path, string contents) => File.WriteAllText(path, contents);
         public void AppendAllText(string path, string contents) => File.AppendAllText(path, contents);
+        public void FileMove(string sourceFileName, string destFileName) => File.Move(sourceFileName, destFileName);
     }
 }

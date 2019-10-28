@@ -11,5 +11,6 @@
         string[] ReadAllLines(string fileName);
         void WriteAllText(string path, string contents);
         void AppendAllText(string path, string contents);
+        void FileMove(string sourceFileName, string destFileName);
     }
 }
