@@ -1,0 +1,32 @@
+stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  script:
+    - dotnet build
+    - dotnet publish Sales.Data.Analysis --no-build --output o
+  artifacts:
+    expire_in: 1 week  
+    paths:
+      - o
+  tags:
+    - W104YDJCK2
+
+test_job:
+  stage: test
+  script:
+    - dotnet test --logger:trx;LogFileName=TestOutput.xml
+  artifacts:
+    when: always  
+    expire_in: 1 week 
+    paths:
+      - 'Sales.Data.Analysis.UnitTest\TestResults\TestOutput.xml'
+    reports:
+      junit: 'Sales.Data.Analysis.UnitTest\TestResults\TestOutput.xml'
+  needs:
+    - build_job
+  tags:
+    - W104YDJCK2
+
