@@ -12,7 +12,7 @@ namespace Sales.Data.Analysis.IoC
               .Configure<LoggerFilterOptions>(o => o
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("System", LogLevel.Warning)
-                .AddFilter("Collect.Sale", LogLevel.Debug));
+                .AddFilter("Sales.Data.Analysis", LogLevel.Debug));
         }
     }
 }
